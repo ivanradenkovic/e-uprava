@@ -1,0 +1,41 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <img src="../../../assets/logo-basic.png" height="30px" style="margin-right: 15px"/>
+              <h5 class="card-title text-center">              
+                ULOGUJ SE</h5>
+
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errorCode">
+                Uneli ste nevalidne podatke.
+            </div>
+            <form class="form-signin" [formGroup]="form" (submit)="!(disabled || this.form.invalid) && onSubmit()">
+              <div class="form-label-group  has-danger">
+                <input type="email" id="inputEmail" class="form-control" [class.form-control-danger]="errorCode" formControlName="email" placeholder="Email address" required autofocus>
+                <label for="inputEmail">Email</label>
+              </div>
+
+              <div class="form-label-group  has-danger">
+                <input type="password" id="inputPassword" class="form-control" [class.form-control-danger]="errorCode" formControlName="password" placeholder="Password" required>
+                <label for="inputPassword">Lozinka</label>
+              </div>
+
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Upamti lozinku</label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" [disabled]="disabled || this.form.invalid" (click)="onSubmit()">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="disabled"></span>
+                  Prijavi se</button>
+           </form>
+           
+           <hr class="my-4">
+           <p><em>Nemaš nalog? <a routerLink="/register">Registruj se</a></em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,11 @@
+<ng-container *ngIf="showNavbar">
+  <app-bs-navbar></app-bs-navbar>
+</ng-container>
+
+  <main role="main" class="container">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </main>
+
+  <footer class="footer text-center">
+      <span class="text-muted">EUPRAVA © 2019 by Ivan Radenkovic. All rights reserved.</span>
+  </footer>

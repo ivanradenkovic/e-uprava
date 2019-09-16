@@ -1,0 +1,11 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">{{ appointment.purpose }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted"> {{ appointment.date | date:'dd.MM.yyyy HH:mm' }}</h6>
+    <h6> <span [class.text-success]="appointment.status == AppointmentStatus.GRANTED"
+        [class.text-primary]="appointment.status == AppointmentStatus.PENDING"
+        [class.text-danger]="appointment.status == AppointmentStatus.REJECTED">{{ translate[appointment.status] }}</span>
+      <span *ngIf="user$ | async as user"> od strane {{ user.name }}</span></h6>
+    <h6 *ngIf="appointment.status == AppointmentStatus.REJECTED">Razlog: {{ appointment.message }}</h6>
+  </div>
+</div>

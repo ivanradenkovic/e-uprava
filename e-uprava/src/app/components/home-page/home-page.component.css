@@ -1,0 +1,14 @@
+::ng-deep body {
+    /* position: relative;
+    width: 100%;
+    min-height: auto;
+    overflow-y: hidden; */
+    /* background: url('https://sip.elfak.ni.ac.rs/assets/template/landing/img/intro-bg.jpg') no-repeat, #fff; */
+    /* padding-top: 0; */
+}
+
+.jumbotron {
+    background: transparent;
+    height: 100vh;
+}
+

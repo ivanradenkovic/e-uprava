@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-lg-10 mx-auto">
+        <div class="d-flex">
+          <div class="d-flex justify-content-center flex-grow-1" *ngIf="loading; else cards" style="margin-top: 60px">
+            <div class="spinner-grow text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <ng-template #cards >
+            <div class="flex-grow-1">
+              <ng-container *ngIf="appointments.length === 0">
+                      Još uvek nemate nikakvih zahteva.
+              </ng-container>
+              <app-appointment-preview-card [appointment]="app" *ngFor="let app of appointments"></app-appointment-preview-card>
+            </div>
+          </ng-template>
+        </div>
+  
+      </div>
+    </div>
+  </div>

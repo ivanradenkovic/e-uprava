@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md fixed-top" style="background-color: #fff">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" style="padding: 0">
+      <img src="../../../assets/logo.png" height="30px" />
+    </a>
+    <button (click)="isNavbarCollapsed = !isNavbarCollapsed" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div ngbCollapse class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav ml-auto">
+
+        <ng-template #anonymusUser>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Uloguj se</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register">Registruj se</a>
+          </li>
+        </ng-template>
+
+
+        <li ngbDropdown *ngIf="this.appUser; else anonymusUser" class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ this.appUser.name }}
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <!-- <a class="dropdown-item" routerLink="/my/orders">My Orders</a> -->
+            <ng-container *ngIf="this.appUser.isOffice">
+              <a class="dropdown-item" routerLink="/appointments">Administracija</a>
+            </ng-container>
+            <a class="dropdown-item" routerLink="/appointments/create">Online zakazivanje</a>
+            <a class="dropdown-item" routerLink="/appointments/my">Moji termini</a>
+            <a class="dropdown-item" (click)="logout()">Odjavi se</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
